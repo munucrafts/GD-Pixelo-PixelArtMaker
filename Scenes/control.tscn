@@ -1,10 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpng2wf0yx83k"]
+[gd_scene load_steps=3 format=3 uid="uid://dpng2wf0yx83k"]
 
 [ext_resource type="Script" path="res://Scenes/Control.gd" id="1_0va4h"]
+[ext_resource type="PackedScene" uid="uid://do311bsrculf1" path="res://Scenes/ColorButtonContainer.tscn" id="2_4fhmx"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 384.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 3
 script = ExtResource("1_0va4h")
+
+[node name="ColorButtonContainer" parent="." instance=ExtResource("2_4fhmx")]

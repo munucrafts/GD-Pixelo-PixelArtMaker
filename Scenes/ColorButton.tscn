@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bft4jxp6ll8gv"]
+
+[ext_resource type="Script" path="res://Scenes/ColorButton.gd" id="1_mkryj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hri1q"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing_size = 1.5
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_mkryj")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 0.498039, 0, 1)
+offset_right = 30.0
+offset_bottom = 30.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_hri1q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hri1q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hri1q")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hri1q")
+keep_pressed_outside = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

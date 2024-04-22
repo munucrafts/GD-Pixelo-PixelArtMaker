@@ -3,21 +3,16 @@
 [ext_resource type="Script" path="res://Scenes/Control.gd" id="1_0va4h"]
 [ext_resource type="PackedScene" uid="uid://do311bsrculf1" path="res://Scenes/ColorButtonContainer.tscn" id="2_4fhmx"]
 
-[node name="Node2D" type="Node2D"]
-
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.6, 0.6)
 mouse_default_cursor_shape = 3
 script = ExtResource("1_0va4h")
 
 [node name="ColorButtonContainer" parent="." instance=ExtResource("2_4fhmx")]
-z_index = 10
-position = Vector2(8, 8)
+
+[node name="Camera2D" type="Camera2D" parent="."]

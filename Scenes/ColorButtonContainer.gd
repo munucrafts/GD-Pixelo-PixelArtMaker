@@ -31,15 +31,13 @@ var pixel_colors = [
 
 func _ready():
 	var initial_position = Vector2(5, 0)
-	
-	for i in range(5):
-		var row_position = initial_position + Vector2(0, i * 33 + 5)
-		
-		for j in range(5):
-			var button_position = row_position + Vector2(j * 33, 0)
+	for i in range(6):
+		var row_position = initial_position + Vector2(0, i * 35 + 5)
+		for j in range(4):
+			var button_position = row_position + Vector2(j * 35, 0)
 			var button_instance = button_scene.instantiate()
 			add_child(button_instance)
 			button_instance.position = button_position
-			var color_index = i * 5 + j
+			var color_index = i * 4 + j
 			var color = pixel_colors[color_index]
 			button_instance.update_style(color)

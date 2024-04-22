@@ -14,10 +14,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.6, 0.6)
 mouse_default_cursor_shape = 3
 script = ExtResource("1_0va4h")
 
 [node name="ColorButtonContainer" parent="." instance=ExtResource("2_4fhmx")]
-z_index = 10
 position = Vector2(8, 8)

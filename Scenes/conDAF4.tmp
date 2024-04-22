@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpng2wf0yx83k"]
+[gd_scene load_steps=4 format=3 uid="uid://dpng2wf0yx83k"]
 
 [ext_resource type="Script" path="res://Scenes/Control.gd" id="1_0va4h"]
 [ext_resource type="PackedScene" uid="uid://do311bsrculf1" path="res://Scenes/ColorButtonContainer.tscn" id="2_4fhmx"]
 [ext_resource type="Texture2D" uid="uid://dxlijcr8f5lh" path="res://Assets/WhiteBG.jpg" id="2_pwaa7"]
-[ext_resource type="PackedScene" uid="uid://d166svgwccwdk" path="res://Scenes/OpacitySlider.tscn" id="4_ndaml"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -14,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.75, 0.75)
 mouse_default_cursor_shape = 3
 script = ExtResource("1_0va4h")
 
@@ -26,6 +25,3 @@ texture = ExtResource("2_pwaa7")
 expand_mode = 1
 
 [node name="ColorButtonContainer" parent="." instance=ExtResource("2_4fhmx")]
-
-[node name="OpacitySlider" parent="." instance=ExtResource("4_ndaml")]
-position = Vector2(4, 208)

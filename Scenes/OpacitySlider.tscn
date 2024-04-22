@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://d166svgwccwdk"]
+
+[ext_resource type="Script" path="res://Scenes/OpacitySlider.gd" id="1_mwgka"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51f07"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtcyr"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_mwgka")
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = 48.0
+offset_top = 104.0
+offset_right = 152.0
+offset_bottom = 120.0
+rotation = -1.5708
+mouse_default_cursor_shape = 2
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_51f07")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_51f07")
+min_value = 50.0
+value = 100.0
+
+[node name="ColorPickerButton" type="Button" parent="."]
+offset_left = 8.0
+offset_right = 40.0
+offset_bottom = 104.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_jtcyr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jtcyr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jtcyr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_jtcyr")
+
+[connection signal="mouse_entered" from="HSlider" to="." method="_on_h_slider_mouse_entered"]
+[connection signal="mouse_exited" from="HSlider" to="." method="_on_h_slider_mouse_exited"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]

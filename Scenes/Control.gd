@@ -6,12 +6,14 @@ var canvas_size = Vector2(screen_size.x / pixel_size, screen_size.y / pixel_size
 var pixels = []
 var color = Color(0, 0, 1)
 var bg_color = Color(255, 255, 255, 255)
-var current_shape = "rectangle"
+var cursor_shape = "rectangle"
+var opacity = 1
 
 func _ready():
 	create_canvas()
 	mouse_cursor_visibility(false)
 	cursor_color(0.5)
+	cursor_shaping()
 	
 func mouse_cursor_visibility(visible : bool):
 	if visible:
@@ -40,7 +42,7 @@ func cursor_color(alpha : float):
 
 func center_positon():
 	position = Vector2(screen_size) / 2 - scale * ( pixel_size / 2 ) * canvas_size
-	
+		
 func draw_or_erase():
 	var cursor_loc_position = get_local_mouse_position()
 	var cursor_glob_position = get_global_mouse_position()
@@ -57,6 +59,7 @@ func draw_pixel(position, color):
 	var y = int(position.y / pixel_size)
 
 	if x >= 0 and x < canvas_size.x and y >= 0 and y < canvas_size.y:
+		color.a = opacity
 		pixels[x][y] = color
 
 func erase_pixel(position):
@@ -69,9 +72,9 @@ func erase_pixel(position):
 func _draw():
 	for x in range(int(canvas_size.x)):
 		for y in range(int(canvas_size.y)):
-			if current_shape == "circle":
+			if cursor_shape == "circle":
 				draw_circle(Vector2(x * pixel_size + pixel_size / 2, y * pixel_size + pixel_size / 2), pixel_size / 2, pixels[x][y])
-			elif current_shape == "rectangle":
+			elif cursor_shape == "rectangle":
 				draw_rect(Rect2(x * pixel_size, y * pixel_size, pixel_size, pixel_size), pixels[x][y])
 
 func _input(event):
@@ -85,3 +88,12 @@ func zoom_with_mouse_wheel(event):
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.is_pressed():
 			scale += Vector2(0.1, 0.1)
 			scale = clamp(scale, Vector2(0.1, 0.1), Vector2(1, 1))
+
+func cursor_shaping():
+	if cursor_shape == "rectangle":
+		$"../cursor".texture = load("res://Assets/SquareWhite.jpg")
+	elif cursor_shape == "circle":
+		$"../cursor".texture = load("res://Assets/CircleWhite.png")
+
+
+	

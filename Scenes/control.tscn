@@ -9,14 +9,23 @@
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 scale = Vector2(0.6, 0.6)
 mouse_default_cursor_shape = 3
 script = ExtResource("1_0va4h")
+
+[node name="ControlBG" type="Sprite2D" parent="Control"]
+z_index = -5
+scale = Vector2(0.9, 0.6)
+texture = ExtResource("2_pwaa7")
+centered = false
+
+[node name="LeftBG" type="Sprite2D" parent="."]
+modulate = Color(0.701961, 0.282353, 0.352941, 1)
+z_index = -5
+position = Vector2(68, 324)
+scale = Vector2(0.106416, 0.670707)
+texture = ExtResource("2_pwaa7")
 
 [node name="cursor" type="TextureRect" parent="."]
 modulate = Color(0, 0, 1, 0.533333)
@@ -28,4 +37,4 @@ expand_mode = 1
 [node name="ColorButtonContainer" parent="." instance=ExtResource("2_4fhmx")]
 
 [node name="OpacitySlider" parent="." instance=ExtResource("4_ndaml")]
-position = Vector2(4, 208)
+position = Vector2(0, 208)

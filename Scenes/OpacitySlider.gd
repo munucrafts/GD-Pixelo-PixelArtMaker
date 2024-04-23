@@ -13,4 +13,5 @@ func _on_h_slider_mouse_exited():
 
 func _on_h_slider_value_changed(value):
 	get_tree().current_scene.get_node("Control").opacity = $HSlider.value / 100
-	$ColorPickerButton.modulate.a = $HSlider.value / 100
+	$ColorPickerButton.get_theme_stylebox("normal").bg_color.a = $HSlider.value / 100
+

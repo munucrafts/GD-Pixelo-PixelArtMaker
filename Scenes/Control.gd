@@ -2,7 +2,7 @@ extends Control
 
 var pixel_size = 16
 var screen_size = DisplayServer.window_get_size()
-var canvas_size = Vector2(screen_size.x / pixel_size, screen_size.y / pixel_size)
+var canvas_size = Vector2(screen_size.x / 16, screen_size.y / 16)
 var pixels = []
 var color = Color(0, 0, 1)
 var bg_color = Color(255, 255, 255, 255)
@@ -14,6 +14,7 @@ func _ready():
 	mouse_cursor_visibility(false)
 	cursor_color(0.5)
 	cursor_shaping()
+	center_positon()
 	
 func mouse_cursor_visibility(visible : bool):
 	if visible:
@@ -25,12 +26,14 @@ func create_canvas():
 	for x in range(canvas_size.x):
 		var column = []
 		for y in range(canvas_size.y):
-			column.append(bg_color)
+			if x == 0 or x == canvas_size.x - 1 or y == 0 or y == canvas_size.y - 1:
+				column.append(Color(0, 0, 0))  # Set extreme pixels to black
+			else:
+				column.append(bg_color)
 		pixels.append(column)
 	
 func _process(delta):
 	draw_or_erase()
-	center_positon()
 	cursor_scaling()
 	
 func cursor_scaling():
@@ -41,7 +44,11 @@ func cursor_color(alpha : float):
 	$"../cursor".modulate.a = alpha
 
 func center_positon():
-	position = Vector2(screen_size) / 2 - scale * ( pixel_size / 2 ) * canvas_size
+	var scaledCanvasSize = scale * canvas_size * pixel_size
+	scaledCanvasSize.x = scaledCanvasSize.x - 135
+	position = abs(Vector2(screen_size) - scaledCanvasSize) / 2
+	#$ControlBG.position = position
+	#$ControlBG.scale = scale
 		
 func draw_or_erase():
 	var cursor_loc_position = get_local_mouse_position()
@@ -58,7 +65,7 @@ func draw_pixel(position, color):
 	var x = int(position.x / pixel_size)
 	var y = int(position.y / pixel_size)
 
-	if x >= 0 and x < canvas_size.x and y >= 0 and y < canvas_size.y:
+	if x > 0 and x < canvas_size.x - 1 and y > 0 and y < canvas_size.y - 1:
 		color.a = opacity
 		pixels[x][y] = color
 
@@ -66,7 +73,7 @@ func erase_pixel(position):
 	var x = int(position.x / pixel_size)
 	var y = int(position.y / pixel_size)
 
-	if x >= 0 and x < canvas_size.x and y >= 0 and y < canvas_size.y:
+	if x > 0 and x < canvas_size.x - 1 and y > 0 and y < canvas_size.y - 1:
 		pixels[x][y] = bg_color 
 
 func _draw():
@@ -84,10 +91,12 @@ func zoom_with_mouse_wheel(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.is_pressed():
 			scale -= Vector2(0.1, 0.1)
-			scale = clamp(scale, Vector2(0.1, 0.1), Vector2(1, 1))
+			scale = clamp(scale, Vector2(0.1, 0.1), Vector2(0.8, 0.8))
+			center_positon()
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.is_pressed():
 			scale += Vector2(0.1, 0.1)
-			scale = clamp(scale, Vector2(0.1, 0.1), Vector2(1, 1))
+			scale = clamp(scale, Vector2(0.1, 0.1), Vector2(0.8, 0.8))
+			center_positon()
 
 func cursor_shaping():
 	if cursor_shape == "rectangle":

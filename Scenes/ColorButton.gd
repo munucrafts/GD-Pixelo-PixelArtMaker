@@ -13,7 +13,7 @@ func update_style(new_color : Color):
 func _on_button_pressed():
 	main_scene.get_node("Control").color = button_color
 	main_scene.get_node("Control").cursor_color(0.5)
-	main_scene.get_node("OpacitySlider").get_node("ColorPickerButton").modulate = Color(button_color.r, button_color.g, button_color.b, main_scene.get_node("Control").opacity)
+	main_scene.get_node("OpacitySlider").get_node("ColorPickerButton").modulate = Color(button_color.r, button_color.g, button_color.b)
 
 func _on_button_mouse_entered():
 	main_scene.get_node("Control").mouse_cursor_visibility(true)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpng2wf0yx83k"]
+[gd_scene load_steps=6 format=3 uid="uid://dpng2wf0yx83k"]
 
 [ext_resource type="Script" path="res://Scenes/Control.gd" id="1_0va4h"]
 [ext_resource type="PackedScene" uid="uid://do311bsrculf1" path="res://Scenes/ColorButtonContainer.tscn" id="2_4fhmx"]
 [ext_resource type="Texture2D" uid="uid://dxlijcr8f5lh" path="res://Assets/WhiteBG.jpg" id="2_pwaa7"]
 [ext_resource type="PackedScene" uid="uid://d166svgwccwdk" path="res://Scenes/OpacitySlider.tscn" id="4_ndaml"]
+[ext_resource type="PackedScene" uid="uid://cbrj1wnc6lfc" path="res://Scenes/PixelSizeSlider.tscn" id="5_l0hid"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -38,3 +39,6 @@ expand_mode = 1
 
 [node name="OpacitySlider" parent="." instance=ExtResource("4_ndaml")]
 position = Vector2(0, 208)
+
+[node name="Node2D" parent="." instance=ExtResource("5_l0hid")]
+position = Vector2(0, 280)

@@ -1,10 +1,11 @@
 extends Control
 
 var pixel_size = 16
+var pixel_size_multiplier = 1
 var screen_size = DisplayServer.window_get_size()
-var canvas_size = Vector2(screen_size.x / 16, screen_size.y / 16)
+var canvas_size = Vector2(screen_size.x / pixel_size, screen_size.y / pixel_size)
 var pixels = []
-var color = Color(0, 0, 1)
+var color = Color(0, 255, 0)
 var bg_color = Color(255, 255, 255, 255)
 var cursor_shape = "rectangle"
 var opacity = 1
@@ -37,7 +38,7 @@ func _process(delta):
 	cursor_scaling()
 	
 func cursor_scaling():
-	$"../cursor".scale = scale * Vector2(pixel_size, pixel_size) / $"../cursor".size
+	$"../cursor".scale = pixel_size_multiplier * scale * Vector2(pixel_size, pixel_size) / $"../cursor".size
 	
 func cursor_color(alpha : float):
 	$"../cursor".modulate = color
@@ -51,30 +52,38 @@ func center_positon():
 	#$ControlBG.scale = scale
 		
 func draw_or_erase():
+	var num = 2
 	var cursor_loc_position = get_local_mouse_position()
 	var cursor_glob_position = get_global_mouse_position()
+	var pos_array = []
+	pos_array.append(cursor_loc_position)
+	for i in range(1, pixel_size_multiplier):
+		pos_array.append(cursor_loc_position + Vector2(16 * i, 0))
+		pos_array.append(cursor_loc_position + Vector2(16 * i, 16 * i))
+		pos_array.append(cursor_loc_position + Vector2(0, 16 * i))
+		
 	$"../cursor".position = cursor_glob_position
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		draw_pixel(cursor_loc_position, color)
+		draw_pixel(pos_array, color)
 		queue_redraw()
 	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		erase_pixel(cursor_loc_position)
+		erase_pixel(pos_array)
 		queue_redraw()
 
-func draw_pixel(position, color):
-	var x = int(position.x / pixel_size)
-	var y = int(position.y / pixel_size)
-
-	if x > 0 and x < canvas_size.x - 1 and y > 0 and y < canvas_size.y - 1:
-		color.a = opacity
-		pixels[x][y] = color
-
-func erase_pixel(position):
-	var x = int(position.x / pixel_size)
-	var y = int(position.y / pixel_size)
-
-	if x > 0 and x < canvas_size.x - 1 and y > 0 and y < canvas_size.y - 1:
-		pixels[x][y] = bg_color 
+func draw_pixel(positions: Array, color):
+	for position in positions:
+		var x = int(position.x / pixel_size)
+		var y = int(position.y / pixel_size)
+		if x > 0 and x < canvas_size.x - 1 and y > 0 and y < canvas_size.y - 1:
+			color.a = opacity
+			pixels[x][y] = color
+			
+func erase_pixel(positions: Array):
+	for position in positions:
+		var x = int(position.x / pixel_size)
+		var y = int(position.y / pixel_size)
+		if x > 0 and x < canvas_size.x - 1 and y > 0 and y < canvas_size.y - 1:
+			pixels[x][y] = bg_color
 
 func _draw():
 	for x in range(int(canvas_size.x)):

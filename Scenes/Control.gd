@@ -1,12 +1,12 @@
 extends Control
 
-var pixel_size = 16
-var pixel_size_multiplier = 1
-var screen_size = DisplayServer.window_get_size()
+var pixel_size = 8
+var pixel_size_multiplier = 2
+var screen_size = DisplayServer.screen_get_size() * 0.6
 var canvas_size = Vector2(screen_size.x / pixel_size, screen_size.y / pixel_size)
 var pixels = []
 var color = Color(0, 255, 0)
-var bg_color = Color(255, 255, 255, 255)
+var bg_color = Color(255, 255, 255, 0)
 var cursor_shape = "rectangle"
 var opacity = 1
 
@@ -14,7 +14,7 @@ func _ready():
 	create_canvas()
 	mouse_cursor_visibility(false)
 	cursor_color(0.5)
-	cursor_shaping()
+	cursor_shaping(cursor_shape)
 	center_positon()
 	
 func mouse_cursor_visibility(visible : bool):
@@ -52,15 +52,13 @@ func center_positon():
 	#$ControlBG.scale = scale
 		
 func draw_or_erase():
-	var num = 2
 	var cursor_loc_position = get_local_mouse_position()
 	var cursor_glob_position = get_global_mouse_position()
 	var pos_array = []
 	pos_array.append(cursor_loc_position)
-	for i in range(1, pixel_size_multiplier):
-		pos_array.append(cursor_loc_position + Vector2(16 * i, 0))
-		pos_array.append(cursor_loc_position + Vector2(16 * i, 16 * i))
-		pos_array.append(cursor_loc_position + Vector2(0, 16 * i))
+	for i in range(pixel_size_multiplier):
+		for j in range(pixel_size_multiplier):
+			pos_array.append(cursor_loc_position + Vector2(pixel_size * i, pixel_size * j))
 		
 	$"../cursor".position = cursor_glob_position
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -107,11 +105,15 @@ func zoom_with_mouse_wheel(event):
 			scale = clamp(scale, Vector2(0.1, 0.1), Vector2(0.8, 0.8))
 			center_positon()
 
-func cursor_shaping():
-	if cursor_shape == "rectangle":
-		$"../cursor".texture = load("res://Assets/SquareWhite.jpg")
-	elif cursor_shape == "circle":
+func cursor_shaping(shape: String):
+	cursor_shape = shape
+	if shape == "rectangle":
+		$"../cursor".texture = load("res://Assets/WhiteBG.jpg")
+	elif shape == "circle":
 		$"../cursor".texture = load("res://Assets/CircleWhite.png")
 
+func export_canvas(filepath: String):
+	var image = $SubViewportContainer/SubViewport.get_texture().get_image()
+	image.save_png(filepath)
 
-	
+

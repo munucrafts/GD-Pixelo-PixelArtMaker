@@ -5,10 +5,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51f07"]
 bg_color = Color(1, 1, 1, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
@@ -41,9 +41,9 @@ offset_bottom = 64.0
 mouse_default_cursor_shape = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_51f07")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_51f07")
-min_value = 16.0
+min_value = 8.0
 max_value = 64.0
-step = 16.0
+step = 8.0
 value = 16.0
 
 [node name="ColorPickerButton" type="Button" parent="."]

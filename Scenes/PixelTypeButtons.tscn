@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx6tbxd7gon5t"]
+
+[ext_resource type="Script" path="res://Scenes/PixelTypeButtons.gd" id="1_luvm4"]
+[ext_resource type="FontFile" uid="uid://tbreqfuqf7rs" path="res://Fonts/Jersey25-Regular.ttf" id="2_las5s"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_luvm4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 120.0
+offset_bottom = 66.0
+
+[node name="Button_Circle" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_las5s")
+theme_override_font_sizes/font_size = 20
+text = "Circle"
+
+[node name="Button_Rectangle" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_las5s")
+theme_override_font_sizes/font_size = 21
+text = "Rectangle"
+
+[connection signal="mouse_entered" from="VBoxContainer/Button_Circle" to="." method="_on_button_circle_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Button_Circle" to="." method="_on_button_circle_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/Button_Circle" to="." method="_on_button_circle_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Button_Rectangle" to="." method="_on_button_rectangle_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Button_Rectangle" to="." method="_on_button_rectangle_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/Button_Rectangle" to="." method="_on_button_rectangle_pressed"]

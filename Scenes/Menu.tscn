@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7iiocycl0vh0"]
+
+[ext_resource type="Script" path="res://Scenes/Menu.gd" id="1_au3c4"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_au3c4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

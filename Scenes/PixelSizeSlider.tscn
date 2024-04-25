@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbrj1wnc6lfc"]
 
 [ext_resource type="Script" path="res://Scenes/PixelSizeSlider.gd" id="1_bw66a"]
-[ext_resource type="FontFile" uid="uid://tbreqfuqf7rs" path="res://Fonts/Jersey25-Regular.ttf" id="2_ljv1s"]
+[ext_resource type="FontFile" uid="uid://dehjo7qp3a0ua" path="res://Fonts/Teko-SemiBold.ttf" id="2_2aiw4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51f07"]
 bg_color = Color(1, 1, 1, 1)
@@ -53,7 +53,7 @@ offset_right = 131.0
 offset_bottom = 44.0
 focus_mode = 0
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_ljv1s")
+theme_override_fonts/font = ExtResource("2_2aiw4")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_jtcyr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jtcyr")
@@ -62,7 +62,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_jtcyr")
 theme_override_styles/focus = SubResource("StyleBoxFlat_jtcyr")
 disabled = true
 button_mask = 4
-text = "Pixel Size -16"
+text = "Pixel Size - 2X"
 
 [connection signal="mouse_entered" from="HSlider" to="." method="_on_h_slider_mouse_entered"]
 [connection signal="mouse_exited" from="HSlider" to="." method="_on_h_slider_mouse_exited"]

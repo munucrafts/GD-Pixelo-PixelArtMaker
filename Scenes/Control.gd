@@ -2,7 +2,7 @@ extends Control
 
 var pixel_size = 8
 var pixel_size_multiplier = 2
-var screen_size = DisplayServer.screen_get_size() * 0.6
+var screen_size = Vector2(1152, 648)
 var canvas_size = Vector2(screen_size.x / pixel_size, screen_size.y / pixel_size)
 var pixels = []
 var color = Color(0, 255, 0)
@@ -16,6 +16,10 @@ func _ready():
 	cursor_color(0.5)
 	cursor_shaping(cursor_shape)
 	center_positon()
+	window_size(screen_size)
+	
+func window_size(size : Vector2):
+	DisplayServer.window_set_size(size)
 	
 func mouse_cursor_visibility(visible : bool):
 	if visible:
@@ -48,8 +52,6 @@ func center_positon():
 	var scaledCanvasSize = scale * canvas_size * pixel_size
 	scaledCanvasSize.x = scaledCanvasSize.x - 135
 	position = abs(Vector2(screen_size) - scaledCanvasSize) / 2
-	#$ControlBG.position = position
-	#$ControlBG.scale = scale
 		
 func draw_or_erase():
 	var cursor_loc_position = get_local_mouse_position()
@@ -59,15 +61,14 @@ func draw_or_erase():
 	for i in range(pixel_size_multiplier):
 		for j in range(pixel_size_multiplier):
 			pos_array.append(cursor_loc_position + Vector2(pixel_size * i, pixel_size * j))
-		
-	$"../cursor".position = cursor_glob_position
+	$"../cursor".position = cursor_glob_position.snapped(Vector2(pixel_size, pixel_size))
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		draw_pixel(pos_array, color)
 		queue_redraw()
 	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		erase_pixel(pos_array)
 		queue_redraw()
-
+		
 func draw_pixel(positions: Array, color):
 	for position in positions:
 		var x = int(position.x / pixel_size)

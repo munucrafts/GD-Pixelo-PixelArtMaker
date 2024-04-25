@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/OpacitySlider.gd" id="1_mwgka"]
 [ext_resource type="Texture2D" uid="uid://dxlijcr8f5lh" path="res://Assets/WhiteBG.jpg" id="2_0xs6e"]
-[ext_resource type="FontFile" uid="uid://tbreqfuqf7rs" path="res://Fonts/Jersey25-Regular.ttf" id="2_kk2hd"]
+[ext_resource type="FontFile" uid="uid://dehjo7qp3a0ua" path="res://Fonts/Teko-SemiBold.ttf" id="2_f3dk2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51f07"]
 bg_color = Color(1, 1, 1, 1)
@@ -51,7 +51,7 @@ offset_right = 131.0
 offset_bottom = 44.0
 focus_mode = 0
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_kk2hd")
+theme_override_fonts/font = ExtResource("2_f3dk2")
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = SubResource("StyleBoxFlat_jtcyr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jtcyr")

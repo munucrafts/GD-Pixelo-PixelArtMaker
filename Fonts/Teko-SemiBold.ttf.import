@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://tbreqfuqf7rs"
-path="res://.godot/imported/Jersey25-Regular.ttf-59b945bed68b62db1ca5a4e7564509e8.fontdata"
+uid="uid://dehjo7qp3a0ua"
+path="res://.godot/imported/Teko-SemiBold.ttf-bc44b89ba4fbea2ee30fdfb402f4b31d.fontdata"
 
 [deps]
 
-source_file="res://Fonts/Jersey25-Regular.ttf"
-dest_files=["res://.godot/imported/Jersey25-Regular.ttf-59b945bed68b62db1ca5a4e7564509e8.fontdata"]
+source_file="res://Fonts/Teko-SemiBold.ttf"
+dest_files=["res://.godot/imported/Teko-SemiBold.ttf-bc44b89ba4fbea2ee30fdfb402f4b31d.fontdata"]
 
 [params]
 

@@ -12,10 +12,9 @@ func _on_button_pressed():
 		"Export":
 			main_scene.get_node("Control").export_canvas("C:/Sarthak/GODOT/GD_PixelArtCreator/Saveee/image.png")
 		"How to?":
-			print($Button.text)
-		"Quit":
-			get_tree().quit()
-			
+			main_scene.get_node("HowTo").visible = not main_scene.get_node("HowTo").visible
+				
+
 func _on_button_mouse_entered():
 	main_scene.get_node("Control").mouse_cursor_visibility(true)
 	main_scene.get_node("Control").cursor_color(0)

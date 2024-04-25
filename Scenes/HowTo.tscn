@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://i6jta2e4kd6a"]
+
+[ext_resource type="Texture2D" uid="uid://dxlijcr8f5lh" path="res://Assets/WhiteBG.jpg" id="1_6i4hb"]
+[ext_resource type="FontFile" uid="uid://dehjo7qp3a0ua" path="res://Fonts/Teko-SemiBold.ttf" id="2_odxiv"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TexBack" type="TextureRect" parent="."]
+modulate = Color(0.0705882, 0.647059, 0.435294, 1)
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_6i4hb")
+expand_mode = 1
+
+[node name="TexFront" type="TextureRect" parent="."]
+modulate = Color(0.701961, 0.282353, 0.352941, 1)
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 1088.0
+offset_bottom = 576.0
+texture = ExtResource("1_6i4hb")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 1024.0
+offset_bottom = 512.0
+
+[node name="Text01" type="TextEdit" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/background_color = Color(0, 0, 0, 0.196078)
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_background_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_odxiv")
+theme_override_font_sizes/font_size = 30
+text = " 1. Left-Mouse button and drag to draw on the canvas."
+editable = false
+scroll_fit_content_height = true
+
+[node name="Text02" type="TextEdit" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/background_color = Color(0, 0, 0, 0.196078)
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_background_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_odxiv")
+theme_override_font_sizes/font_size = 30
+text = " 2. Right-Mouse button and drag to erase drawn pixels on the canvas."
+editable = false
+scroll_fit_content_height = true
+
+[node name="Text03" type="TextEdit" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/background_color = Color(0, 0, 0, 0.196078)
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_background_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_odxiv")
+theme_override_font_sizes/font_size = 30
+text = " 3. Scroll the mouse wheel to zoom in and out."
+editable = false
+scroll_fit_content_height = true

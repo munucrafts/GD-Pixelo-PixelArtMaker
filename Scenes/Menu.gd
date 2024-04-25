@@ -1,6 +1,6 @@
 extends Node2D
 
-var menu_buttons = ["Quit", "How to?", "Export", "New"]
+var menu_buttons = ["How to?", "Export", "New"]
 
 func _ready():
 	add_menu_buttons()

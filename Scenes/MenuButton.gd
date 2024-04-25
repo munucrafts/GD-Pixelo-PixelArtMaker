@@ -10,7 +10,7 @@ func _on_button_pressed():
 		"New":
 			get_tree().change_scene_to_file("res://Scenes/control.tscn")
 		"Export":
-			main_scene.get_node("Control").export_canvas("C:/Sarthak/GODOT/GD_PixelArtCreator/Saveee/image.png")
+			main_scene.get_node("ExportSettings").visible = not main_scene.get_node("ExportSettings").visible
 		"How to?":
 			main_scene.get_node("HowTo").visible = not main_scene.get_node("HowTo").visible
 				

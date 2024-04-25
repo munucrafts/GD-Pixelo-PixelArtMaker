@@ -1,10 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2mw31lodgrlg"]
+[gd_scene load_steps=6 format=3 uid="uid://c2mw31lodgrlg"]
 
 [ext_resource type="Script" path="res://Scenes/MenuButton.gd" id="1_te8jh"]
 [ext_resource type="FontFile" uid="uid://dehjo7qp3a0ua" path="res://Fonts/Teko-SemiBold.ttf" id="2_t5jgo"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hri1q"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hd5k0"]
+bg_color = Color(0.701961, 0.282353, 0.352941, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 3
@@ -16,8 +16,19 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hd5k0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6xo6i"]
 bg_color = Color(0.701961, 0.282353, 0.352941, 1)
+border_width_left = 5
+border_width_top = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hri1q"]
+bg_color = Color(1, 1, 1, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 3
@@ -36,15 +47,15 @@ script = ExtResource("1_te8jh")
 offset_right = 96.0
 offset_bottom = 25.0
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_t5jgo")
 theme_override_font_sizes/font_size = 19
-theme_override_styles/normal = SubResource("StyleBoxFlat_hri1q")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hd5k0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hd5k0")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_hd5k0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6xo6i")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_hri1q")
 theme_override_styles/focus = SubResource("StyleBoxFlat_hd5k0")
 text = "How to?"

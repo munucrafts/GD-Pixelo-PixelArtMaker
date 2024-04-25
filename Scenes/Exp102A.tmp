@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://i6jta2e4kd6a"]
+[gd_scene load_steps=8 format=3 uid="uid://cuacmx373pbca"]
 
-[ext_resource type="Texture2D" uid="uid://dxlijcr8f5lh" path="res://Assets/WhiteBG.jpg" id="1_6i4hb"]
-[ext_resource type="Script" path="res://Scenes/HowTo.gd" id="1_7jhrv"]
-[ext_resource type="FontFile" uid="uid://dehjo7qp3a0ua" path="res://Fonts/Teko-SemiBold.ttf" id="2_odxiv"]
+[ext_resource type="Script" path="res://Scenes/ExportSettings.gd" id="1_4u2fv"]
+[ext_resource type="Texture2D" uid="uid://dxlijcr8f5lh" path="res://Assets/WhiteBG.jpg" id="2_af2p7"]
+[ext_resource type="FontFile" uid="uid://dehjo7qp3a0ua" path="res://Fonts/Teko-SemiBold.ttf" id="3_fvlmh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30ool"]
 bg_color = Color(0.0705882, 0.647059, 0.435294, 1)
@@ -41,14 +41,19 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hpoe"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_color = Color(0.8, 0.8, 0.8, 0)
+
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_7jhrv")
+script = ExtResource("1_4u2fv")
 
 [node name="TexBack" type="TextureRect" parent="."]
 modulate = Color(0.0705882, 0.647059, 0.435294, 1)
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("1_6i4hb")
+texture = ExtResource("2_af2p7")
 expand_mode = 1
 
 [node name="TexFront" type="TextureRect" parent="."]
@@ -57,52 +62,35 @@ offset_left = 64.0
 offset_top = 64.0
 offset_right = 1088.0
 offset_bottom = 576.0
-texture = ExtResource("1_6i4hb")
+texture = ExtResource("2_af2p7")
 expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 128.0
 offset_top = 128.0
 offset_right = 1024.0
-offset_bottom = 512.0
+offset_bottom = 244.0
 
-[node name="Text01" type="TextEdit" parent="VBoxContainer"]
+[node name="TextFilename" type="TextEdit" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/background_color = Color(0, 0, 0, 0.196078)
 theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/caret_background_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_odxiv")
+theme_override_fonts/font = ExtResource("3_fvlmh")
 theme_override_font_sizes/font_size = 30
-text = " 1. Left-Mouse button and move to draw on the canvas."
-editable = false
-selecting_enabled = false
+placeholder_text = "Enter your file name."
 scroll_fit_content_height = true
 
-[node name="Text02" type="TextEdit" parent="VBoxContainer"]
+[node name="TextFilepath" type="TextEdit" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/background_color = Color(0, 0, 0, 0.196078)
 theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/caret_background_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_odxiv")
+theme_override_fonts/font = ExtResource("3_fvlmh")
 theme_override_font_sizes/font_size = 30
-text = " 2. Right-Mouse button and move to erase drawn pixels on the canvas."
-editable = false
-selecting_enabled = false
-scroll_fit_content_height = true
-
-[node name="Text03" type="TextEdit" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_colors/background_color = Color(0, 0, 0, 0.196078)
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/caret_background_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_odxiv")
-theme_override_font_sizes/font_size = 30
-text = " 3. Scroll the mouse wheel to zoom in and out."
-editable = false
-selecting_enabled = false
+placeholder_text = "Enter your file save path."
 scroll_fit_content_height = true
 
 [node name="ButtonBack" type="Button" parent="."]
@@ -115,7 +103,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_odxiv")
+theme_override_fonts/font = ExtResource("3_fvlmh")
 theme_override_font_sizes/font_size = 19
 theme_override_styles/normal = SubResource("StyleBoxFlat_30ool")
 theme_override_styles/hover = SubResource("StyleBoxFlat_30ool")
@@ -124,6 +112,45 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_uh3us")
 theme_override_styles/focus = SubResource("StyleBoxFlat_30ool")
 text = "Back"
 
+[node name="ErrorMessage" type="TextEdit" parent="."]
+offset_left = 128.0
+offset_top = 336.0
+offset_right = 1024.0
+offset_bottom = 392.0
+theme_override_colors/background_color = Color(0, 0, 0, 0.196078)
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_background_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_fvlmh")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_8hpoe")
+text = "Please fill the file name and file save path fields above."
+editable = false
+selecting_enabled = false
+scroll_fit_content_height = true
+
+[node name="ButtonSave" type="Button" parent="."]
+offset_left = 529.0
+offset_top = 448.0
+offset_right = 625.0
+offset_bottom = 481.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_fvlmh")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("StyleBoxFlat_30ool")
+theme_override_styles/hover = SubResource("StyleBoxFlat_30ool")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hy0if")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_uh3us")
+theme_override_styles/focus = SubResource("StyleBoxFlat_30ool")
+text = "Save"
+
 [connection signal="mouse_entered" from="ButtonBack" to="." method="_on_button_back_mouse_entered"]
 [connection signal="mouse_exited" from="ButtonBack" to="." method="_on_button_back_mouse_exited"]
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="mouse_entered" from="ButtonSave" to="." method="_on_button_save_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonSave" to="." method="_on_button_save_mouse_exited"]
+[connection signal="pressed" from="ButtonSave" to="." method="_on_button_save_pressed"]

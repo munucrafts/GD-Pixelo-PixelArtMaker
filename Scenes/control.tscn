@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpng2wf0yx83k"]
+[gd_scene load_steps=9 format=3 uid="uid://dpng2wf0yx83k"]
 
 [ext_resource type="Script" path="res://Scenes/Control.gd" id="1_0va4h"]
 [ext_resource type="PackedScene" uid="uid://do311bsrculf1" path="res://Scenes/ColorButtonContainer.tscn" id="2_4fhmx"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cbrj1wnc6lfc" path="res://Scenes/PixelSizeSlider.tscn" id="5_l0hid"]
 [ext_resource type="PackedScene" uid="uid://c7iiocycl0vh0" path="res://Scenes/Menu.tscn" id="6_ys20k"]
 [ext_resource type="PackedScene" uid="uid://i6jta2e4kd6a" path="res://Scenes/HowTo.tscn" id="7_jn0v2"]
+[ext_resource type="PackedScene" uid="uid://cuacmx373pbca" path="res://Scenes/ExportSettings.tscn" id="8_3rlby"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -23,20 +24,6 @@ z_index = -5
 scale = Vector2(0.9, 0.65)
 texture = ExtResource("2_pwaa7")
 centered = false
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
-z_index = -100
-layout_mode = 0
-offset_right = 1147.0
-offset_bottom = 640.0
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-canvas_item_default_texture_filter = 0
-size = Vector2i(1147, 640)
-render_target_update_mode = 4
 
 [node name="LeftBG" type="Sprite2D" parent="."]
 modulate = Color(0.701961, 0.282353, 0.352941, 1)
@@ -63,10 +50,14 @@ position = Vector2(0, 208)
 z_index = -2
 position = Vector2(0, 280)
 
+[node name="ExportSettings" parent="." instance=ExtResource("8_3rlby")]
+visible = false
+z_index = -1
+
 [node name="HowTo" parent="." instance=ExtResource("7_jn0v2")]
 visible = false
 z_index = -1
 
 [node name="Menu" parent="." instance=ExtResource("6_ys20k")]
-z_index = 10
+z_index = -2
 position = Vector2(1048, 8)

@@ -62,12 +62,13 @@ func draw_or_erase():
 		for j in range(pixel_size_multiplier):
 			pos_array.append(cursor_loc_position + Vector2(pixel_size * i, pixel_size * j))
 	$"../cursor".position = cursor_glob_position.snapped(Vector2(pixel_size, pixel_size))
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		draw_pixel(pos_array, color)
-		queue_redraw()
-	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		erase_pixel(pos_array)
-		queue_redraw()
+	if $"../HowTo".visible != true && $"../ExportSettings".visible != true:
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			draw_pixel(pos_array, color)
+			queue_redraw()
+		elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+			erase_pixel(pos_array)
+			queue_redraw()
 		
 func draw_pixel(positions: Array, color):
 	for position in positions:
@@ -113,8 +114,19 @@ func cursor_shaping(shape: String):
 	elif shape == "circle":
 		$"../cursor".texture = load("res://Assets/CircleWhite.png")
 
-func export_canvas(filepath: String):
-	var image = $SubViewportContainer/SubViewport.get_texture().get_image()
-	image.save_png(filepath)
+func export_canvas(filename: String, filepath: String):
+	if filename != "" && filepath != "" && DirAccess.dir_exists_absolute(filepath):
+		var Dir = DirAccess.open(filepath)
+		Dir.make_dir("Pixelo")
+		await RenderingServer.frame_post_draw
+		var viewport = get_viewport()
+		var export_image = viewport.get_texture().get_image()
+		export_image.save_png(filepath+"Pixelo//"+filename+".png")
+		$"../ExportSettings".get_node("ErrorMessage").visible = false
+	else:
+		$"../ExportSettings".name_or_path_empty()
+
+
+
 
 

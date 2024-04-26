@@ -115,18 +115,18 @@ func cursor_shaping(shape: String):
 		$"../cursor".texture = load("res://Assets/CircleWhite.png")
 
 func export_canvas(filename: String, filepath: String):
-	if filename != "" && filepath != "" && DirAccess.dir_exists_absolute(filepath):
-		var Dir = DirAccess.open(filepath)
-		Dir.make_dir("Pixelo")
-		await RenderingServer.frame_post_draw
-		var viewport = get_viewport()
-		var export_image = viewport.get_texture().get_image()
-		export_image.save_png(filepath+"Pixelo//"+filename+".png")
-		$"../ExportSettings".get_node("ErrorMessage").visible = false
+	if filename != "" && filepath != "" && filepath != "C:\\" && DirAccess.dir_exists_absolute(filepath):
+		#$"../ExportSettings".image_saved()
+		#var Dir = DirAccess.open(filepath)
+		#await RenderingServer.frame_post_draw
+		#var viewport = get_viewport()
+		#var screenshot_region = Rect2(position, canvas_size * pixel_size / scale)
+		#var export_image = viewport.get_texture().get_image().get_region(screenshot_region)
+		#export_image.save_png(filepath+"//"+filename+".png")
+		$SubViewportContainer/SubViewport.get_viewport().get_texture().get_image().save_png("d.png")
 	else:
 		$"../ExportSettings".name_or_path_empty()
 
-
-
+	
 
 

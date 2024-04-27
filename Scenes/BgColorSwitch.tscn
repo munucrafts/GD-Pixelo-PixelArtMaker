@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://1ofaxlytlylh"]
+
+[ext_resource type="Script" path="res://Scenes/BgColorSwitch.gd" id="1_w2sg5"]
+[ext_resource type="FontFile" uid="uid://dehjo7qp3a0ua" path="res://Fonts/Teko-SemiBold.ttf" id="2_m5sbv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtcyr"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0)
+anti_aliasing = false
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_w2sg5")
+
+[node name="ColorPickerButton" type="Button" parent="."]
+offset_left = 5.0
+offset_top = 11.0
+offset_right = 131.0
+offset_bottom = 44.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_m5sbv")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_jtcyr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jtcyr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jtcyr")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_jtcyr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_jtcyr")
+text = "Switch BG Color"
+
+[connection signal="mouse_entered" from="ColorPickerButton" to="." method="_on_color_picker_button_mouse_entered"]
+[connection signal="mouse_exited" from="ColorPickerButton" to="." method="_on_color_picker_button_mouse_exited"]
+[connection signal="pressed" from="ColorPickerButton" to="." method="_on_color_picker_button_pressed"]

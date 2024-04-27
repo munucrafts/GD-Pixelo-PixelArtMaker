@@ -52,7 +52,7 @@ offset_bottom = 44.0
 focus_mode = 0
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_f3dk2")
-theme_override_font_sizes/font_size = 21
+theme_override_font_sizes/font_size = 19
 theme_override_styles/normal = SubResource("StyleBoxFlat_jtcyr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jtcyr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_jtcyr")
@@ -64,9 +64,9 @@ text = "Opacity"
 
 [node name="BtnBG" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(6.5, 41.8216)
+position = Vector2(6.5, 42.3216)
 rotation = -1.5708
-scale = Vector2(0.0228693, 0.123833)
+scale = Vector2(0.0232627, 0.123833)
 texture = ExtResource("2_0xs6e")
 centered = false
 

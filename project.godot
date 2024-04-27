@@ -16,7 +16,7 @@ config/use_custom_user_dir=true
 config/custom_user_dir_name="Pixelo"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
-config/windows_native_icon="res://Scenes/Screenshot 2024-04-25 203354.ico"
+config/windows_native_icon="res://Scenes/Icon.ico"
 
 [display]
 

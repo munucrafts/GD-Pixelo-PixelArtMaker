@@ -1,21 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpng2wf0yx83k"]
+[gd_scene load_steps=11 format=3 uid="uid://dpng2wf0yx83k"]
 
 [ext_resource type="Script" path="res://Scenes/Control.gd" id="1_0va4h"]
 [ext_resource type="PackedScene" uid="uid://do311bsrculf1" path="res://Scenes/ColorButtonContainer.tscn" id="2_4fhmx"]
 [ext_resource type="Texture2D" uid="uid://dxlijcr8f5lh" path="res://Assets/WhiteBG.jpg" id="2_pwaa7"]
+[ext_resource type="Texture2D" uid="uid://cukmoebq2nkon" path="res://Assets/SquareHollow.png" id="3_o8k1l"]
 [ext_resource type="PackedScene" uid="uid://d166svgwccwdk" path="res://Scenes/OpacitySlider.tscn" id="4_ndaml"]
 [ext_resource type="PackedScene" uid="uid://cbrj1wnc6lfc" path="res://Scenes/PixelSizeSlider.tscn" id="5_l0hid"]
 [ext_resource type="PackedScene" uid="uid://c7iiocycl0vh0" path="res://Scenes/Menu.tscn" id="6_ys20k"]
 [ext_resource type="PackedScene" uid="uid://i6jta2e4kd6a" path="res://Scenes/HowTo.tscn" id="7_jn0v2"]
 [ext_resource type="PackedScene" uid="uid://cuacmx373pbca" path="res://Scenes/ExportSettings.tscn" id="8_3rlby"]
+[ext_resource type="PackedScene" uid="uid://1ofaxlytlylh" path="res://Scenes/BgColorSwitch.tscn" id="10_kkrel"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="Control" type="Control" parent="."]
 z_index = -1
 y_sort_enabled = true
 layout_mode = 3
 anchors_preset = 0
+offset_left = 1.0
+offset_right = 1.0
 scale = Vector2(0.6, 0.6)
 mouse_default_cursor_shape = 3
 script = ExtResource("1_0va4h")
@@ -35,21 +41,32 @@ texture = ExtResource("2_pwaa7")
 
 [node name="cursor" type="TextureRect" parent="."]
 modulate = Color(0, 0, 1, 0.533333)
-offset_right = 128.0
-offset_bottom = 128.0
+layout_mode = 0
+offset_left = 352.0
+offset_top = 120.0
+offset_right = 480.0
+offset_bottom = 248.0
 texture = ExtResource("2_pwaa7")
 expand_mode = 1
 
+[node name="Sprite2D" type="Sprite2D" parent="cursor"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(64, 64)
+scale = Vector2(0.535565, 0.535565)
+texture = ExtResource("3_o8k1l")
+
 [node name="ColorButtonContainer" parent="." instance=ExtResource("2_4fhmx")]
 z_index = -2
+position = Vector2(0, 1)
 
 [node name="OpacitySlider" parent="." instance=ExtResource("4_ndaml")]
 z_index = -2
-position = Vector2(0, 208)
+position = Vector2(0, 272)
 
 [node name="PixelSizeSlider" parent="." instance=ExtResource("5_l0hid")]
 z_index = -2
-position = Vector2(0, 280)
+position = Vector2(0, 344)
 
 [node name="Menu" parent="." instance=ExtResource("6_ys20k")]
 z_index = -2
@@ -62,3 +79,6 @@ z_index = -1
 [node name="HowTo" parent="." instance=ExtResource("7_jn0v2")]
 visible = false
 z_index = -1
+
+[node name="Node2D" parent="." instance=ExtResource("10_kkrel")]
+position = Vector2(0, 416)

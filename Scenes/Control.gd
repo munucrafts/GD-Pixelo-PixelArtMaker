@@ -1,12 +1,12 @@
 extends Control
 
 var pixel_size = 8
-var pixel_size_multiplier = 2
+var pixel_size_multiplier = 3
 var screen_size = Vector2(1152, 648)
 var canvas_size = Vector2(screen_size.x / pixel_size, screen_size.y / pixel_size)
 var pixels = []
-var color = Color(0, 255, 0)
-var bg_color = Color(255, 255, 255, 0)
+var color = Color(0, 0.749, 1)
+var bg_color = Color(1, 1, 1, 0)
 var cursor_shape = "rectangle"
 var opacity = 1
 
@@ -92,7 +92,7 @@ func _draw():
 				draw_circle(Vector2(x * pixel_size + pixel_size / 2, y * pixel_size + pixel_size / 2), pixel_size / 2, pixels[x][y])
 			elif cursor_shape == "rectangle":
 				draw_rect(Rect2(x * pixel_size, y * pixel_size, pixel_size, pixel_size), pixels[x][y])
-
+	
 func _input(event):
 	zoom_with_mouse_wheel(event)
 			
@@ -116,17 +116,12 @@ func cursor_shaping(shape: String):
 
 func export_canvas(filename: String, filepath: String):
 	if filename != "" && filepath != "" && filepath != "C:\\" && DirAccess.dir_exists_absolute(filepath):
-		#$"../ExportSettings".image_saved()
-		#var Dir = DirAccess.open(filepath)
-		#await RenderingServer.frame_post_draw
-		#var viewport = get_viewport()
-		#var screenshot_region = Rect2(position, canvas_size * pixel_size / scale)
-		#var export_image = viewport.get_texture().get_image().get_region(screenshot_region)
-		#export_image.save_png(filepath+"//"+filename+".png")
-		$SubViewportContainer/SubViewport.get_viewport().get_texture().get_image().save_png("d.png")
+		$"../ExportSettings".image_saved()
+		var Dir = DirAccess.open(filepath)
+		await RenderingServer.frame_post_draw
+		var viewport = get_viewport()
+		var screenshot_region = Rect2(position, Vector2(1500, 1000))
+		var export_image = viewport.get_texture().get_image().get_region(screenshot_region)
+		export_image.save_png(filepath+"//"+filename+".png")
 	else:
 		$"../ExportSettings".name_or_path_empty()
-
-	
-
-

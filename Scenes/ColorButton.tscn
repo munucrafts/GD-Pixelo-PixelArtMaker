@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bft4jxp6ll8gv"]
+[gd_scene load_steps=6 format=3 uid="uid://bft4jxp6ll8gv"]
 
 [ext_resource type="Script" path="res://Scenes/ColorButton.gd" id="1_mkryj"]
 
@@ -9,10 +9,10 @@ border_width_top = 1
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x7206"]
@@ -22,10 +22,10 @@ border_width_top = 1
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sen87"]
@@ -35,24 +35,37 @@ border_width_top = 2
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5rkk"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 anti_aliasing = false
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_mkryj")
 
 [node name="Button" type="Button" parent="."]
-modulate = Color(1, 0.498039, 0, 1)
+modulate = Color(0.501961, 0, 0, 1)
 offset_right = 30.0
 offset_bottom = 30.0
 mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_hri1q")
 theme_override_styles/hover = SubResource("StyleBoxFlat_x7206")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_sen87")
-theme_override_styles/focus = SubResource("StyleBoxFlat_sen87")
+theme_override_styles/focus = SubResource("StyleBoxFlat_s5rkk")
 keep_pressed_outside = true
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]

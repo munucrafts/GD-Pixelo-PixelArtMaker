@@ -15,8 +15,8 @@ run/main_scene="res://Scenes/control.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Pixelo"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
-config/windows_native_icon="res://Scenes/Icon.ico"
+config/icon="res://Icons/Icon Png.png"
+config/windows_native_icon="res://Icons/Icon 256.ico"
 
 [display]
 

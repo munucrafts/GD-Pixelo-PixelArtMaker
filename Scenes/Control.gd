@@ -121,7 +121,6 @@ func export_canvas(filename: String, filepath: String):
 		var camera = Camera2D.new()
 		add_child(camera)
 		scale = Vector2(0.8, 0.8)
-		center_positon()
 		camera.z_index = 10
 		camera.anchor_mode = Camera2D.ANCHOR_MODE_FIXED_TOP_LEFT
 		camera.enabled = true

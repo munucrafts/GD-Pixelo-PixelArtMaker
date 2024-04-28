@@ -13,8 +13,7 @@ func _on_button_pressed():
 			main_scene.get_node("ExportSettings").visible = not main_scene.get_node("ExportSettings").visible
 		"How to?":
 			main_scene.get_node("HowTo").visible = not main_scene.get_node("HowTo").visible
-				
-
+		
 func _on_button_mouse_entered():
 	main_scene.get_node("Control").mouse_cursor_visibility(true)
 	main_scene.get_node("Control").cursor_color(0)

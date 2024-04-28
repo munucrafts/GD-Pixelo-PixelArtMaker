@@ -100,11 +100,11 @@ func zoom_with_mouse_wheel(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.is_pressed():
 			scale -= Vector2(0.1, 0.1)
-			scale = clamp(scale, Vector2(0.1, 0.1), Vector2(0.8, 0.8))
+			scale = clamp(scale, Vector2(0.5, 0.5), Vector2(0.8, 0.8))
 			center_positon()
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.is_pressed():
 			scale += Vector2(0.1, 0.1)
-			scale = clamp(scale, Vector2(0.1, 0.1), Vector2(0.8, 0.8))
+			scale = clamp(scale, Vector2(0.5, 0.5), Vector2(0.8, 0.8))
 			center_positon()
 
 func cursor_shaping(shape: String):
@@ -117,11 +117,23 @@ func cursor_shaping(shape: String):
 func export_canvas(filename: String, filepath: String):
 	if filename != "" && filepath != "" && filepath != "C:\\" && DirAccess.dir_exists_absolute(filepath):
 		$"../ExportSettings".image_saved()
-		var Dir = DirAccess.open(filepath)
+		$"../cursor".visible = false
+		var camera = Camera2D.new()
+		add_child(camera)
+		scale = Vector2(0.8, 0.8)
+		center_positon()
+		camera.z_index = 10
+		camera.anchor_mode = Camera2D.ANCHOR_MODE_FIXED_TOP_LEFT
+		camera.enabled = true
+		camera.position = Vector2(0.1, 0)
+		camera.zoom = Vector2(1/scale.x , 1/scale.y)
 		await RenderingServer.frame_post_draw
-		var viewport = get_viewport()
-		var screenshot_region = Rect2(position, Vector2(1500, 1000))
-		var export_image = viewport.get_texture().get_image().get_region(screenshot_region)
-		export_image.save_png(filepath+"//"+filename+".png")
+		var viewport = camera.get_viewport()
+		var export_image = viewport.get_texture().get_image()
+		await RenderingServer.frame_post_draw
+		export_image.save_png(filepath + "//" + filename + ".png")
+		camera.queue_free()
+		$"../cursor".visible = true
 	else:
 		$"../ExportSettings".name_or_path_empty()
+

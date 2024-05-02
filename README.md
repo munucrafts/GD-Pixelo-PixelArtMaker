@@ -13,4 +13,4 @@
 - Click on Export button. Set file save path and file name to export the created art as PNG file.
   
 ## License
-- Feel free to use or modify this plugin according to your requirements. Attribution is appreciated but not required. If you use this plugin in your project, please consider mentioning the author in your project credits or README file.
+- Feel free to use or modify this Editor according to your requirements. Attribution is appreciated but not required. If you use this plugin in your project, please consider mentioning the author in your project credits or README file.

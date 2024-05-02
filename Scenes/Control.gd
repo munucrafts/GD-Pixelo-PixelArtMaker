@@ -7,14 +7,13 @@ var canvas_size = Vector2(screen_size.x / pixel_size, screen_size.y / pixel_size
 var pixels = []
 var color = Color(0, 0.749, 1)
 var bg_color = Color(1, 1, 1, 0)
-var cursor_shape = "rectangle"
 var opacity = 1
 
 func _ready():
 	create_canvas()
 	mouse_cursor_visibility(false)
 	cursor_color(0.5)
-	cursor_shaping(cursor_shape)
+	cursor_shaping()
 	center_positon()
 	window_size(screen_size)
 	
@@ -47,7 +46,7 @@ func cursor_scaling():
 func cursor_color(alpha : float):
 	$"../cursor".modulate = color
 	$"../cursor".modulate.a = alpha
-
+	
 func center_positon():
 	var scaledCanvasSize = scale * canvas_size * pixel_size
 	scaledCanvasSize.x = scaledCanvasSize.x - 135
@@ -88,10 +87,7 @@ func erase_pixel(positions: Array):
 func _draw():
 	for x in range(int(canvas_size.x)):
 		for y in range(int(canvas_size.y)):
-			if cursor_shape == "circle":
-				draw_circle(Vector2(x * pixel_size + pixel_size / 2, y * pixel_size + pixel_size / 2), pixel_size / 2, pixels[x][y])
-			elif cursor_shape == "rectangle":
-				draw_rect(Rect2(x * pixel_size, y * pixel_size, pixel_size, pixel_size), pixels[x][y])
+			draw_rect(Rect2(x * pixel_size, y * pixel_size, pixel_size, pixel_size), pixels[x][y])
 	
 func _input(event):
 	zoom_with_mouse_wheel(event)
@@ -107,12 +103,8 @@ func zoom_with_mouse_wheel(event):
 			scale = clamp(scale, Vector2(0.5, 0.5), Vector2(0.8, 0.8))
 			center_positon()
 
-func cursor_shaping(shape: String):
-	cursor_shape = shape
-	if shape == "rectangle":
-		$"../cursor".texture = load("res://Assets/WhiteBG.jpg")
-	elif shape == "circle":
-		$"../cursor".texture = load("res://Assets/CircleWhite.png")
+func cursor_shaping():
+	$"../cursor".texture = load("res://Assets/WhiteBG.jpg")
 
 func export_canvas(filename: String, filepath: String):
 	if filename != "" && filepath != "" && filepath != "C:\\" && DirAccess.dir_exists_absolute(filepath):

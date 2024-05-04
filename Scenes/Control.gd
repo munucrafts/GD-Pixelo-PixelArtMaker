@@ -107,7 +107,7 @@ func cursor_shaping():
 	$"../cursor".texture = load("res://Assets/WhiteBG.jpg")
 
 func export_canvas(filename: String, filepath: String):
-	if filename != "" && filepath != "" && filepath != "C:\\" && DirAccess.dir_exists_absolute(filepath):
+	if filename != "" && filepath != "" && DirAccess.dir_exists_absolute(filepath):
 		$"../ExportSettings".image_saved()
 		$"../cursor".visible = false
 		var camera = Camera2D.new()
@@ -122,9 +122,13 @@ func export_canvas(filename: String, filepath: String):
 		var viewport = camera.get_viewport()
 		var export_image = viewport.get_texture().get_image()
 		await RenderingServer.frame_post_draw
-		export_image.save_png(filepath + "//" + filename + ".png")
+		var save_path
+		if filepath.ends_with("\\"):
+			save_path = filepath + filename + ".png"
+		elif filepath.ends_with(""):
+			save_path = filepath + "//" + filename + ".png"
+		export_image.save_png(save_path)
 		camera.queue_free()
 		$"../cursor".visible = true
 	else:
 		$"../ExportSettings".name_or_path_empty()
-

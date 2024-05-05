@@ -2,6 +2,7 @@
 
 ## Description
 - I created PIXELO Editor in Godot for a youtube video devlog. It's a simple editor made by me in a few days just for some fun that you can use to create pixel art.
+- Download from here - https://munucrafts.itch.io/pixelo-editor
 
 ## Installation
 - Download the PIXELO Editor.

@@ -39,10 +39,10 @@ texture = ExtResource("2_pwaa7")
 [node name="cursor" type="TextureRect" parent="."]
 modulate = Color(0, 0, 1, 0.533333)
 layout_mode = 0
-offset_left = 512.0
-offset_top = 152.0
-offset_right = 640.0
-offset_bottom = 280.0
+offset_left = 344.0
+offset_top = 208.0
+offset_right = 472.0
+offset_bottom = 336.0
 texture = ExtResource("2_pwaa7")
 expand_mode = 1
 
@@ -54,22 +54,27 @@ scale = Vector2(0.535565, 0.535565)
 texture = ExtResource("3_o8k1l")
 
 [node name="ColorButtonContainer" parent="." instance=ExtResource("2_4fhmx")]
+visible = false
 z_index = -2
 position = Vector2(0, 1)
 
 [node name="OpacitySlider" parent="." instance=ExtResource("4_ndaml")]
+visible = false
 z_index = -2
 position = Vector2(0, 272)
 
 [node name="PixelSizeSlider" parent="." instance=ExtResource("5_l0hid")]
+visible = false
 z_index = -2
 position = Vector2(0, 344)
 
 [node name="BgColorSwitch" parent="." instance=ExtResource("10_kkrel")]
+visible = false
 z_index = -2
 position = Vector2(0, 416)
 
 [node name="Menu" parent="." instance=ExtResource("6_ys20k")]
+visible = false
 z_index = -2
 position = Vector2(1048, 8)
 
